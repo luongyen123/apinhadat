@@ -17,4 +17,10 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('/register', 'RegisterController@register');
     $router->post('/login', 'LoginController@login');
+
+    $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
+        $router->group(['prefix' => 'media'], function () use ($router) {
+            $router->post('/uploadImage','MediaController@uploadImage');
+        });   
+    });
 });
