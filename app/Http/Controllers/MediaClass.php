@@ -18,16 +18,15 @@ trait MediaClass
         }
         $filename = str_random(3).$user_id;
         //generating unique file name;
-   
-        if ($image_base64 != "") { // storing image in storage/app/public Folder
-            $path =  $path . '/' . $filename;
-            Storage::disk($type_action)->put($path, base64_decode($file));
-                      
-            $media = Media::create([
-                'path' => env('IP_SERVER') . $path,
-                'user_id' => $user_id,
-            ]);            
-        }
+
+        $path =  $path . '/' . $filename;
+        Storage::disk($type_action)->put($path, base64_decode($file));
+
+        $media = Media::create([
+            'path' => env('IP_SERVER') . $path,
+            'user_id' => $user_id,
+        ]);
+
         return $path;
     }
 

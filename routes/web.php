@@ -17,10 +17,22 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('/register', 'RegisterController@register');
     $router->post('/login', 'LoginController@login');
+    $router->post('/quanhuyen', 'LoginController@login');
 
     $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
         $router->group(['prefix' => 'media'], function () use ($router) {
             $router->post('/uploadImage','MediaController@uploadImage');
-        });   
+        });
+    });
+});
+$router->group(['prefix' => 'admin'], function () use ($router) {
+    $router->group(['middleware' => 'guest'], function () use ($router) {
+        $router->get('login', 'AuthController@index');
+        $router->get('register', 'AuthController@register');
+    });
+
+    $router->group(['middleware' => 'admin'], function () use ($router) {
+        $router->get('home', 'HomeController@index');
+        $router->get('quanhuyen', 'HomeController@quanhuyen');
     });
 });
