@@ -22,19 +22,7 @@
             <li id="tinmuaban">
               <a href="/admin/tinmuaban"><i class="ion ion-clipboard"></i><span>Tin mua bán</span></a>
             </li>
-            <li>
-              <a href="chartjs.html"><i class="ion ion-stats-bars"></i><span>Quản lý BDS cá nhân</span></a>
-            </li>
-            <li>
-              <a href="simple.html"><i class="ion ion-ios-location-outline"></i><span>Dành cho nhà đầu tư</span></a>
-            </li>
-            <li>
-                <a href="simple.html"><i class="ion ion-ios-location-outline"></i><span>Mua bán nhà đất trả góp</span></a>
-            </li>
-            <li>
-                    <a href="simple.html"><i class="ion ion-ios-location-outline"></i><span>Tin tức nhà đất</span></a>
-            </li>
-            <li>
+            <li id="phanloaitin">
                     <a href="simple.html"><i class="ion ion-ios-location-outline"></i><span>Phân loại tin tức</span></a>
             </li>
             <li id="quanhuyen">
