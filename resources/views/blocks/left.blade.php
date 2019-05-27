@@ -17,11 +17,11 @@
           <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="active">
-              <a href="index.html"><i class="ion ion-speedometer"></i><span>Dashboard</span></a>
+              <a href="/admin/home"><i class="ion ion-speedometer"></i><span>Dashboard</span></a>
             </li>
 
             <li>
-              <a href="table.html"><i class="ion ion-clipboard"></i><span>Tin mua bán</span></a>
+              <a href="/admin/tinmuaban"><i class="ion ion-clipboard"></i><span>Tin mua bán</span></a>
             </li>
             <li>
               <a href="chartjs.html"><i class="ion ion-stats-bars"></i><span>Quản lý BDS cá nhân</span></a>

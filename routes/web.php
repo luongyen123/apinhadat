@@ -32,7 +32,14 @@ $router->group(['prefix' => 'admin'], function () use ($router) {
     });
 
     $router->group(['middleware' => 'admin'], function () use ($router) {
-        $router->get('home', 'HomeController@index');
-        $router->get('quanhuyen', 'HomeController@quanhuyen');
+        $router->get('home', function ()  {
+            return view('contents.index', ['title' => 'Home page Admin']);
+        });
+        $router->get('quanhuyen', function ()  {
+            return view('contents.quanhuyen', ['title' => 'Page quanhuyen']);
+        });
+        $router->get('tinmuaban', function ()  {
+            return view('contents.tinmuaban', ['title' => 'Page Tin mua bán']);
+        });
     });
 });

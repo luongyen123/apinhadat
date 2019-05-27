@@ -1,8 +1,11 @@
 @extends('layouts.layout')
+@section('title')
+{{$title}}
+@endsection
 @section('content')
 <section class="section">
     <h1 class="section-header">
-      <div>Dashboard</div>
+      <div>{{$title}}</div>
     </h1>
     <div class="row">
       <div class="col-lg-3 col-md-6 col-12">
