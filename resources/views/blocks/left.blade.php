@@ -1,4 +1,4 @@
- <div class="main-sidebar">
+<div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
             <a href="index.html">Admin</a>
@@ -16,11 +16,10 @@
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="active">
+            <li id="home">
               <a href="/admin/home"><i class="ion ion-speedometer"></i><span>Dashboard</span></a>
             </li>
-
-            <li>
+            <li id="tinmuaban">
               <a href="/admin/tinmuaban"><i class="ion ion-clipboard"></i><span>Tin mua bán</span></a>
             </li>
             <li>
@@ -38,7 +37,7 @@
             <li>
                     <a href="simple.html"><i class="ion ion-ios-location-outline"></i><span>Phân loại tin tức</span></a>
             </li>
-            <li>
+            <li id="quanhuyen">
                     <a href="/admin/quanhuyen"><i class="ion ion-ios-location-outline"></i><span>Quận huyện Hà Nội</span></a>
             </li>
         </aside>

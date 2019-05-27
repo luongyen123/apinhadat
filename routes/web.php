@@ -33,13 +33,13 @@ $router->group(['prefix' => 'admin'], function () use ($router) {
 
     $router->group(['middleware' => 'admin'], function () use ($router) {
         $router->get('home', function ()  {
-            return view('contents.index', ['title' => 'Home page Admin']);
+            return view('contents.index', ['title' => 'Home page Admin','id'=>'home']);
         });
         $router->get('quanhuyen', function ()  {
-            return view('contents.quanhuyen', ['title' => 'Page quanhuyen']);
+            return view('contents.quanhuyen', ['title' => 'Page quanhuyen','id'=>'quanhuyen']);
         });
         $router->get('tinmuaban', function ()  {
-            return view('contents.tinmuaban', ['title' => 'Page Tin mua bán']);
+            return view('contents.tinmuaban', ['title' => 'Page Tin mua bán','id'=>'tinmuaban']);
         });
     });
 });

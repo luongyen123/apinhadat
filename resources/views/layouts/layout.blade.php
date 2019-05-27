@@ -13,7 +13,13 @@
   <link rel="stylesheet" href="../dist/modules/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="../dist/css/demo.css">
   <link rel="stylesheet" href="../dist/css/style.css">
-  @yield('css')
+  <style>
+    .main-sidebar .sidebar-menu li#{{$id}} a{
+      color: #574B90;
+      background-color: #f6f6f6;
+    }
+  </style>
+   @yield('css')
 </head>
 <body>
     <?php
