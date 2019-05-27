@@ -3,6 +3,7 @@
 {{$title}}
 @endsection
 @section('css')
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link rel="stylesheet" href="../dist/css/tinmuaban.css">
 @endsection
 @section('content')
@@ -14,26 +15,56 @@
     </h1>
     <div class="row" id="post">
         <div class="col-lg-8 col-md-8 col-8 col-sm-8">
-            <form method="post" class="needs-validation" novalidate="">
+            <form method="post" class="needs-validation" acrion="">
                 <div class="card">
                     <div class="card-header">
-                    <h4>Quick Draft</h4>
+                    <h4>Viết bài mới</h4>
                     </div>
                     <div class="card-body">
                     <div class="form-group">
-                        <label>Title</label>
-                        <input type="text" name="title" class="form-control" required>
-                        <div class="invalid-feedback">
-                        Please fill in the title
-                        </div>
+                        <label>Tiêu đề</label>
+                        <input type="text" name="tieude" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Content</label>
+                        <label>Chi tiết</label>
                         <textarea class="summernote-simple" name="description"></textarea>
                     </div>
                     </div>
+                </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-4 col-sm-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Ảnh đại diện bài viết</label>
+                            <div class="avatar-upload">
+                                <div class="avatar-edit">
+                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" name="anhdaidien" />
+                                    <label for="imageUpload"></label>
+                                </div>
+                                <div class="avatar-preview">
+                                    <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" id="loaitin">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Loại tin</label>
+                            <select class="form-control" name="loaitin">
+                                <option value="0">---Lựa chọn loại tin tức---</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>                           
+                        </div>
+                    </div>
                     <div class="card-footer">
-                    <button class="btn btn-primary">Save Draft</button>
+                    <button class="btn btn-primary">Đăng bài</button>
                     </div>
                 </div>
             </form>
@@ -150,19 +181,5 @@
 @endsection
 @section('js')
 <script src="../ckeditor/ckeditor.js"></script>
-<script>  
-    CKEDITOR.replace( 'description', {
-            filebrowserBrowseUrl: '../ckfinder/ckfinder.html',
-            filebrowserImageBrowseUrl: '../ckfinder/ckfinder.html?type=Images',
-            filebrowserFlashBrowseUrl: '../ckfinder/ckfinder.html?type=Flash',
-            filebrowserUploadUrl: '../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-            filebrowserImageUploadUrl: '../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-            filebrowserFlashUploadUrl: '../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-        } );
-    $(document).ready(function(){
-        $("#vietbai").click(function(){
-            $("#post").toggle();
-        });
-    });
-</script>
+<script src="../dist/js/backend/tinmuaban.js"></script>
  @endsection
