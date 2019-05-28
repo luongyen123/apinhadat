@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="../dist/css/tinmuaban.css">
 @endsection
 @section('content')
+
 <section class="section">
     <h1 class="section-header">
         <div>{{$title}}
@@ -15,7 +16,7 @@
     </h1>
     <div class="row" id="post">
         <div class="col-lg-8 col-md-8 col-8 col-sm-8">
-            <form method="post" class="needs-validation" acrion="">
+            <form method="POST" class="needs-validation" id="news" enctype="multipart/form-data">
                 <div class="card">
                     <div class="card-header">
                         <h4>Viết bài mới</h4>                                                
@@ -31,21 +32,21 @@
                             <div class="row">
                                 <div class="col-3 col-md-3 col-lg-3">
                                     <select class="form-control" name="tinhthanh" id="tinhthanh">
-                                        <option value="0">---Chọn Tỉnh Thành Phố---</option>
+                                        <option value="">---Chọn Tỉnh Thành Phố---</option>
                                     </select> 
                                 </div>
                                 <div class="col-3 col-md-3 col-lg-3">
                                     <select class="form-control" name="quanhuyen" id="quanhuyenTP">
-                                        <option value="0">---Chọn Quận huyện---</option>
+                                        <option value="">---Chọn Quận huyện---</option>
                                     </select>
                                 </div>
                                 <div class="col-3 col-md-3 col-lg-3">
                                     <select class="form-control" name="xaphuong" id="xaphuong">
-                                        <option value="0">---Chọn xã phường---</option>
+                                        <option value="">---Chọn xã phường---</option>
                                     </select>
                                 </div>
                                 <div class="col-3 col-md-3 col-lg-3">
-                                    <input type="text" name="vitri" class="form-control" placeholder="Nhập vào địa chỉ nhà">
+                                    <input type="text" name="vitri" class="form-control" placeholder="Nhập vào địa chỉ nhà" id="vitri">
                                 </div>
                             </div>
                                                                                   
@@ -53,10 +54,11 @@
                         <div class="form-group">
                             <label>Tiêu đề <span class="require">*</span></label>
                             <input type="text" name="tieude" class="form-control" required>
+                            <input type="hidden" name="anh" id="anh" value="" />
                         </div>
                         <div class="form-group">
                             <label>Chi tiết <span class="require">*</span></label>
-                            <textarea class="summernote-simple" name="description"></textarea>
+                            <textarea class="summernote-simple" name="description" required ></textarea>
                         </div>
                     </div>
                 </div>
@@ -83,8 +85,8 @@
                     <div class="card-body">
                         <div class="form-group" id="loaitin">
                             <label>Loại tin</label>
-                            <select class="form-control" name="loaitin">
-                                <option value="0">---Lựa chọn loại tin tức---</option>
+                            <select class="form-control" name="loaitin" id="loaitinchon">
+                                <option value="">---Lựa chọn loại tin tức---</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -93,7 +95,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                    <button class="btn btn-primary">Đăng bài</button>
+                    <button class="btn btn-primary" type="submit">Đăng bài</button>
                     </div>
                 </div>
             </form>
@@ -210,5 +212,6 @@
 @endsection
 @section('js')
 <script src="../ckeditor/ckeditor.js"></script>
+<script src = "../dist/js/backend/cookie.min.js"></script>
 <script src="../dist/js/backend/tinmuaban.js"></script>
  @endsection

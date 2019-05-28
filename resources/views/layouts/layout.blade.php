@@ -25,6 +25,7 @@
     <?php
         $user = $_COOKIE['user'];
         $user = json_decode($user);
+        
     ?>
   <div id="app">
        <div class="main-wrapper">

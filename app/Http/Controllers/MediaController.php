@@ -18,13 +18,9 @@ class MediaController extends Controller
     use MediaClass;
 
     public function uploadImage(Request $request){
-        $user = User::find(Auth::id());
-        $this->validate($request, [
-            'upload' => 'mimes:jpeg,jpg,gif,png|required'
-        ]);
-        $file = $request->file('upload');
-        $filename = $file->getClientOriginalName();
-        $url = $this->upload($filename,"news",Auth::id(),$user->name,"uploads");
-        echo "<script>window.parent.CKEDITOR.tools.callFunction(1,'{$url}','')</script>";
+        $image = $request->image;
+        $user_name = $request->user_name;
+        $url = $this->upload($user_name,$image);
+       return $url;
     }
 }
