@@ -18,17 +18,46 @@
             <form method="post" class="needs-validation" acrion="">
                 <div class="card">
                     <div class="card-header">
-                    <h4>Viết bài mới</h4>
+                        <h4>Viết bài mới</h4>                                                
                     </div>
                     <div class="card-body">
-                    <div class="form-group">
-                        <label>Tiêu đề</label>
-                        <input type="text" name="tieude" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Chi tiết</label>
-                        <textarea class="summernote-simple" name="description"></textarea>
-                    </div>
+                        <div class="form-group">
+                            <label>Lựa chọn dạng bài viết <span class="require">*</span></label><br>
+                            <label class="radio-inline"><input type="radio" class="check" name="loaibai" value =1 required>Tin mua bán nhà đất</label>
+                            <label class="radio-inline"><input type="radio"  class="check" name="loaibai" value =2 required>Tin tức nhà đất</label>
+                        </div>
+                        <div class="form-group" id="diachi">
+                            <label>Chọn địa chỉ</label>
+                            <div class="row">
+                                <div class="col-3 col-md-3 col-lg-3">
+                                    <select class="form-control" name="tinhthanh" id="tinhthanh">
+                                        <option value="0">---Chọn Tỉnh Thành Phố---</option>
+                                    </select> 
+                                </div>
+                                <div class="col-3 col-md-3 col-lg-3">
+                                    <select class="form-control" name="quanhuyen" id="quanhuyenTP">
+                                        <option value="0">---Chọn Quận huyện---</option>
+                                    </select>
+                                </div>
+                                <div class="col-3 col-md-3 col-lg-3">
+                                    <select class="form-control" name="xaphuong" id="xaphuong">
+                                        <option value="0">---Chọn xã phường---</option>
+                                    </select>
+                                </div>
+                                <div class="col-3 col-md-3 col-lg-3">
+                                    <input type="text" name="vitri" class="form-control" placeholder="Nhập vào địa chỉ nhà">
+                                </div>
+                            </div>
+                                                                                  
+                        </div>
+                        <div class="form-group">
+                            <label>Tiêu đề <span class="require">*</span></label>
+                            <input type="text" name="tieude" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Chi tiết <span class="require">*</span></label>
+                            <textarea class="summernote-simple" name="description"></textarea>
+                        </div>
                     </div>
                 </div>
         </div>
@@ -36,10 +65,10 @@
                 <div class="card text-center">
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Ảnh đại diện bài viết</label>
+                            <label>Ảnh đại diện bài viết <span class="require">*</span></label>
                             <div class="avatar-upload">
                                 <div class="avatar-edit">
-                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" name="anhdaidien" />
+                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" name="anhdaidien"/>
                                     <label for="imageUpload"></label>
                                 </div>
                                 <div class="avatar-preview">
@@ -50,9 +79,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="card" id="loaitin">
+                <div class="card" >
                     <div class="card-body">
-                        <div class="form-group">
+                        <div class="form-group" id="loaitin">
                             <label>Loại tin</label>
                             <select class="form-control" name="loaitin">
                                 <option value="0">---Lựa chọn loại tin tức---</option>

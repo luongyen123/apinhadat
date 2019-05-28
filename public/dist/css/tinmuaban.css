@@ -1,6 +1,25 @@
 #post{
     display: none;
 }
+#loaitin{
+  display: none;
+}
+#diachi{
+  display: none;
+}
+.form-group label{
+  font-weight: bolder;
+  font-size: 14px;
+  letter-spacing: 0px;
+  font-family: Arial, Helvetica, sans-serif
+}
+.require{
+  color: red;
+}
+label.radio-inline{
+  padding-right: 50px;
+  font-size: 17px;
+}
 .avatar-upload {
     position: relative;
     max-width: 205px;

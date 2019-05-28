@@ -17,7 +17,14 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('/register', 'RegisterController@register');
     $router->post('/login', 'LoginController@login');
-    $router->post('/quanhuyen', 'LoginController@login');
+    //get info tinh thanh
+    $router->post('getTinhThanh','TinhController@getTinh');
+
+    //get info quanhuyen by tinh thanh
+    $router->post('getQuanHuyen','QuanhuyenController@getQuanhuyen');
+
+    //get info xaphuong by tinh quanhuyen
+    $router->post('getXaphuong','XaphuongController@getXaphuong');
 
     $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
         $router->group(['prefix' => 'media'], function () use ($router) {
