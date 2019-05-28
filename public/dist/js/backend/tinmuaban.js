@@ -73,9 +73,9 @@ $("#tinhthanh").change(function(){
             if(data.status === 200){
                 // console.log(data.data.token);
                 var quanhuyen = data.data.datas;
-                var html="";
-                if(length(quanhuyen) == 0){
-                    html= html + "<option value= 0>Chọn tỉnh thành trước</option>";
+                var html="<option value= 0> -- Vui lòng chọn quận huyên --</option>";
+                if(quanhuyen.length == 0){
+                    html="<option value= 0>Chọn tỉnh thành trước</option>";
                 }else{
                     for(let c in quanhuyen){
                         html= html + "<option value="+quanhuyen[c].id+">"+quanhuyen[c].tenqh+"</option>";                   
@@ -87,4 +87,31 @@ $("#tinhthanh").change(function(){
             }  
         });
     
+});
+$("#quanhuyenTP").change(function(){
+    var value = $('#quanhuyenTP option:selected').val();
+    $.ajax({
+        type: 'POST',
+        CrossDomain:true,
+        url: '/api/getXaphuong',
+        data: {maqh:value}// getting filed value in serialize form
+    })
+    .done(function(data){
+        // console.log(data.status);
+        if(data.status === 200){
+            // console.log(data.data.token);
+            var xaphuong = data.data.datas;
+            var html="<option value= 0>-- Vui lòng chọn xã phường --</option>";
+            if(xaphuong.length == 0){
+                html="<option value= 0>Chọn xã phường trước</option>";
+            }else{
+                for(let c in xaphuong){
+                    html= html + "<option value="+xaphuong[c].id+">"+xaphuong[c].tenxa+"</option>";                   
+               }
+            }                
+            $("#xaphuong").html(html);
+        }else{
+            alert("Có lỗi xảy ra");
+        }  
+    });
 });

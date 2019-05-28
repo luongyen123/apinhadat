@@ -17,7 +17,7 @@ class XaphuongResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'tinh' => $this->type." ".$this->tenxa,
+            'tenxa' => $this->type." ".$this->tenxa,
         ];
 
 
