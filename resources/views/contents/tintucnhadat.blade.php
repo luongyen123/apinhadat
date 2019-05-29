@@ -19,42 +19,37 @@
                 <h4>Danh sách bài viết</h4>
             </div>
             <div class="card-body">
-            <label>Tin mua bán nhà đất</label>
                 <table class="table table-striped" id="">
                     <thead>
                         <tr>
                             <th>Tiêu đề</th>
-                            <th>Giá</th>
-                            <th>Diện tích</th>
-                            <th>Vị trí</th>
                             <th>Người đăng</th>
                             <th>Hành động</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach($tinmuaban as $tinban)                     
+                    @if(count($tintucs) >0)
+                        @foreach($tintucs as $tintuc)                     
                         <tr>
                             <td>
-                                {{$tinban->tieude}}
+                                {{$tintuc->tieude}}
                             </td>
+                            <td>{{$tintuc->user->name}}</td>
                             <td>
-                                {{$tinban->gia}} {{$tinban->tiente}}
-                            </td>
-                            <td>
-                                {{$tinban->dientich}} {{$tinban->dvdt}}
-                            </td>
-                            <td> {{$tinban->vitri}}</td>
-                            <td>{{$tinban->user->name}}</td>
-                            <td>
-                                <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href="/admin/editTinmua/{{$tinban->id}}"><i class="ion ion-edit"></i></a>
-                                <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete"><i class="ion ion-trash-b"></i></a>
+                                <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit" href=""><i class="ion ion-edit"></i></a>
+                                <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" href=""><i class="ion ion-trash-b"></i></a>
                             </td>
                         </tr>
                         @endforeach
+                    @else
+                        <tr>
+                            <td colspan="3" class="text-center"> Chưa có bài viết</td>
+                        </tr>
+                    @endif
                     </tbody>
                 </table>
-                 {{ $tinmuaban->links() }}
+                 {{ $tintucs->links() }}
                 
             </div>
             </div>

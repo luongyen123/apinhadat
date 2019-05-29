@@ -6,29 +6,40 @@ CKEDITOR.replace( 'description', {
     filebrowserImageUploadUrl: '../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
     filebrowserFlashUploadUrl: '../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
 } );
-$(document).ready(function(){
-    $("#vietbai").click(function(){
-        if($("#post").css('display') === "none"){
-            $("#post").css('display',"flex");
-        }else{
-            $("#post").css('display',"none")
-        }
-        $.ajax({
-            type: 'POST',
-            CrossDomain:true,
-            url: '/api/getTinhThanh'// getting filed value in serialize form
-        })
-        .done(function(data){
-            // console.log(data.status);
-            if(data.status === 200){
-                // console.log(data.data.token);
-                var tinhthanh = data.data.datas;
-                for(let c in tinhthanh){
-                    $('#tinhthanh').append($('<option>',{value: tinhthanh[c].id,text: tinhthanh[c].tinh}));
-                }
-            }    
-        });// if getting done then ca
+$(document).ready(function(){      
+    $.ajax({
+        type: 'POST',
+        CrossDomain:true,
+        url: '/api/getTinhThanh'// getting filed value in serialize form
+    })
+    .done(function(data){
+        // console.log(data.status);
+        if(data.status === 200){
+            // console.log(data.data.token);
+            var tinhthanh = data.data.datas;
+            for(let c in tinhthanh){
+                $('#tinhthanh').append($('<option>',{value: tinhthanh[c].id,text: tinhthanh[c].tinh}));
+            }
+        }    
+    });// if getting done then ca
+   
+    // Get loai tin
+    $.ajax({
+        type: 'POST',
+        CrossDomain:true,
+        url: '/api/getLoaitin'// getting filed value in serialize form
+    })
+    .done(function(data){
+        // console.log(data.status);
+        if(data.status === 200){
+            // console.log(data.data.token);
+            var loaitin = data.data.datas;
+            for(let c in loaitin){
+                $('#loaitinchon').append($('<option>',{value: loaitin[c].id,text: loaitin[c].tenloaitin}));
+            }
+        }    
     });
+
     $("input[type='radio'].check").click(function() {
         if($(this).is(':checked')) {
             if ($(this).val() == 1) {
@@ -39,6 +50,8 @@ $(document).ready(function(){
                 $('#quanhuyenTP').attr('required', 'required');
                 $('#xaphuong').attr('required', 'required');
                 $('#vitri').attr('required', 'required');
+                $('#gia').attr('required', 'required');
+                $('#dientich').attr('required', 'required');
                 //bo required cho loaitin
                 $('#loaitinchon').removeAttr('required');
             }else{
@@ -52,6 +65,8 @@ $(document).ready(function(){
                 $('#quanhuyenTP').removeAttr('required')
                 $('#xaphuong').removeAttr('required')
                 $('#vitri').removeAttr('required')
+                $('#gia').removeAttr('required')
+                $('#dientich').removeAttr('required')
             }
         }
     });
@@ -156,22 +171,51 @@ $('#news').on('submit', function(e){
     for (instance in CKEDITOR.instances) {
         CKEDITOR.instances[instance].updateElement();
     }
-    console.log($(this).serialize());
+    // console.log($(this).serialize());
     // // Call ajax for pass data to other place
-    // $.ajax({
-    //     type: 'POST',
-    //     CrossDomain:true,
-    //     url: '/api/login',
-    //     data: $(this).serialize() // getting filed value in serialize form
-    // })
-    // .done(function(data){
-    //     // console.log(data.status);
-    //     if(data.status === 200){
-    //         // console.log(data.data.token);
-    //     }
-    //     if(data.status === 414){
+    $.ajax({
+        type: 'POST',
+        CrossDomain:true,
+        headers: {
+            "Authorization": "Bearer " +  Cookies.get('token')
+          },
+        url: '/api/tintuc/themtin',
+        data: $(this).serialize() // getting filed value in serialize form
+    })
+    .done(function(data){
+        // console.log(data.status);
+        if(data.status === 200){
+            location.reload();
+        }
 
-    //     }
+    });// if getting done then ca
+});
+$('#editnews').on('submit', function(e){
+    e.preventDefault();
+//I had an issue that the forms were submitted in geometrical progression after the next submit.
+// This solved the problem.
+    e.stopImmediatePropagation();
+    // show that something is loading
+    // $('#response').html("<b>Loading data...</b>");
+    for (instance in CKEDITOR.instances) {
+        CKEDITOR.instances[instance].updateElement();
+    }
+    // console.log($(this).serialize());
+    // // Call ajax for pass data to other place
+    $.ajax({
+        type: 'POST',
+        CrossDomain:true,
+        headers: {
+            "Authorization": "Bearer " +  Cookies.get('token')
+          },
+        // url: '/api/tintuc/themtin',
+        data: $(this).serialize() // getting filed value in serialize form
+    })
+    .done(function(data){
+        // console.log(data.status);
+        if(data.status === 200){
+            location.reload();
+        }
 
-    // });// if getting done then ca
+    });// if getting done then ca
 });

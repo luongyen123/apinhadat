@@ -15,3 +15,16 @@ if (!function_exists('public_path')) {
         return rtrim(app()->basePath('public/' . $path), '/');
     }
 }
+if (! function_exists('asset')) {
+    /**
+     * Generate an asset path for the application.
+     *
+     * @param  string  $path
+     * @param  bool    $secure
+     * @return string
+     */
+    function asset($path, $secure = null)
+    {
+        return app('url')->asset($path, $secure);
+    }
+}

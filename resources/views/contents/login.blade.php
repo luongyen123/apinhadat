@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 @section('css')
-<link rel="stylesheet" href="../dist/css/login.css">
+<link rel="stylesheet" href="{{asset('../dist/css/login.css')}}">
 @endsection
 @section('content')
 <div class="row">
@@ -47,8 +47,8 @@
 </div>
 @endsection
 @section('js')
-<script src="../dist/js/backend/jquery.validate.min.js"></script>
-<script src="../dist/js/backend/additional-methods.min.js"></script>
-<script src = "../dist/js/backend/login.js"></script>
-<script src = "../dist/js/backend/cookie.min.js"></script>
+<script src="{{asset('../dist/js/backend/jquery.validate.min.js')}}"></script>
+<script src="{{asset('../dist/js/backend/additional-methods.min.js')}}"></script>
+<script src = "{{asset('../dist/js/backend/login.js')}}"></script>
+<script src = "{{asset('../dist/js/backend/cookie.min.js')}}"></script>
 @endsection

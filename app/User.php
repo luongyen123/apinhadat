@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Tintuc;
+use App\Tinmuaban;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Lumen\Auth\Authorizable;
@@ -40,6 +42,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function getJWTCustomClaims()
     {
         return [];
+    }
+    public function tinmuabans(){
+        return $this->hasMany(Tinmuaban::class);
+    }
+    public function tintuc(){
+        return $this->hasMany(Tintuc::class);
     }
     public static function userCreate($data)
     {

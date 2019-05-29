@@ -5,18 +5,17 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
   <title>@yield('title') - Nhà đất Á Châu</title>
 
-  <link rel="stylesheet" href="../dist/modules/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../dist/modules/ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="../dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
-
-  <link rel="stylesheet" href="../dist/modules/summernote/summernote-lite.css">
-  <link rel="stylesheet" href="../dist/modules/flag-icon-css/css/flag-icon.min.css">
-  <link rel="stylesheet" href="../dist/css/demo.css">
-  <link rel="stylesheet" href="../dist/css/style.css">
+  <link rel="stylesheet" href="{{asset('../dist/modules/bootstrap/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('../dist/modules/ionicons/css/ionicons.min.css')}}">
+  <link rel="stylesheet" href="{{asset('../dist/css/demo.css')}}">
+  <link rel="stylesheet" href="{{asset('../dist/css/style.css')}}">
   <style>
     .main-sidebar .sidebar-menu li#{{$id}} a{
       color: #574B90;
       background-color: #f6f6f6;
+    }
+    .pagination{
+      float:right;
     }
   </style>
    @yield('css')
@@ -25,7 +24,6 @@
     <?php
         $user = $_COOKIE['user'];
         $user = json_decode($user);
-        
     ?>
   <div id="app">
        <div class="main-wrapper">
@@ -37,8 +35,8 @@
             </div>
       </div>
   </div>
-  <script src="../dist/modules/jquery.min.js"></script>
-  <script src="../dist/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="{{asset('../dist/modules/jquery.min.js')}}"></script>
+  <script src="{{asset('../dist/modules/bootstrap/js/bootstrap.min.js')}}"></script>
   @yield('js')
 </body>
 </html>

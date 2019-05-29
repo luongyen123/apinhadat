@@ -21,35 +21,35 @@
               </div>
               <div class="dropdown-list-content">
                 <a href="#" class="dropdown-item dropdown-item-unread">
-                  <img alt="image" src="../dist/img/avatar/avatar-1.jpeg" class="rounded-circle dropdown-item-img">
+                  <img alt="image" src="{{asset('../dist/img/avatar/avatar-1.jpeg')}}" class="rounded-circle dropdown-item-img">
                   <div class="dropdown-item-desc">
                     <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
                     <div class="time">10 Hours Ago</div>
                   </div>
                 </a>
                 <a href="#" class="dropdown-item dropdown-item-unread">
-                  <img alt="image" src="../dist/img/avatar/avatar-2.jpeg" class="rounded-circle dropdown-item-img">
+                  <img alt="image" src="{{asset('../dist/img/avatar/avatar-2.jpeg')}}" class="rounded-circle dropdown-item-img">
                   <div class="dropdown-item-desc">
                     <b>Ujang Maman</b> has moved task <b>Fix bug footer</b> to <b>Progress</b>
                     <div class="time">12 Hours Ago</div>
                   </div>
                 </a>
                 <a href="#" class="dropdown-item">
-                  <img alt="image" src="../dist/img/avatar/avatar-3.jpeg" class="rounded-circle dropdown-item-img">
+                  <img alt="image" src="{{asset('../dist/img/avatar/avatar-3.jpeg')}}" class="rounded-circle dropdown-item-img">
                   <div class="dropdown-item-desc">
                     <b>Agung Ardiansyah</b> has moved task <b>Fix bug sidebar</b> to <b>Done</b>
                     <div class="time">12 Hours Ago</div>
                   </div>
                 </a>
                 <a href="#" class="dropdown-item">
-                  <img alt="image" src="../dist/img/avatar/avatar-4.jpeg" class="rounded-circle dropdown-item-img">
+                  <img alt="image" src="{{asset('../dist/img/avatar/avatar-4.jpeg')}}" class="rounded-circle dropdown-item-img">
                   <div class="dropdown-item-desc">
                     <b>Ardian Rahardiansyah</b> has moved task <b>Fix bug navbar</b> to <b>Done</b>
                     <div class="time">16 Hours Ago</div>
                   </div>
                 </a>
                 <a href="#" class="dropdown-item">
-                  <img alt="image" src="../dist/img/avatar/avatar-5.jpeg" class="rounded-circle dropdown-item-img">
+                  <img alt="image" src="{{asset('../dist/img/avatar/avatar-5.jpeg')}}" class="rounded-circle dropdown-item-img">
                   <div class="dropdown-item-desc">
                     <b>Alfa Zulkarnain</b> has moved task <b>Add logo</b> to <b>Done</b>
                     <div class="time">Yesterday</div>

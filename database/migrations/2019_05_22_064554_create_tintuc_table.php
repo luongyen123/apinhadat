@@ -15,9 +15,9 @@ class CreateTintucTable extends Migration
     {
         Schema::create('tintuc', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string("tieude",100);
+            $table->string("tieude",200);
             $table->integer("loaitin_id");
-            $table->string("chitiet",100);
+            $table->string("chitiet",5000);
             $table->string("anh_daidien",100);
             $table->timestamps();
         });
