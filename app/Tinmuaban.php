@@ -61,8 +61,9 @@ class Tinmuaban extends Model
         $tinmua->maxp_id = $data['xaphuong'];
         $tinmua->user_id = $data['user_id'];
         $tinmua->anhdaidien = $data['anh'];
-        $tinmua->chitiet = $data['chitiet'];
+        $tinmua->chitiet = $data['description'];
         
         $tinmua->save();
+        return new TinmuabanResource($tinmua);
     }
 }

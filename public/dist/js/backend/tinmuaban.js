@@ -1,10 +1,10 @@
 CKEDITOR.replace( 'description', {
-    filebrowserBrowseUrl: '../ckfinder/ckfinder.html',
-    filebrowserImageBrowseUrl: '../ckfinder/ckfinder.html?type=Images',
-    filebrowserFlashBrowseUrl: '../ckfinder/ckfinder.html?type=Flash',
-    filebrowserUploadUrl: '../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-    filebrowserImageUploadUrl: '../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-    filebrowserFlashUploadUrl: '../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+    filebrowserBrowseUrl: '../../ckfinder/ckfinder.html',
+    filebrowserImageBrowseUrl: '../../ckfinder/ckfinder.html?type=Images',
+    filebrowserFlashBrowseUrl: '../../ckfinder/ckfinder.html?type=Flash',
+    filebrowserUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+    filebrowserImageUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+    filebrowserFlashUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
 } );
 $(document).ready(function(){      
     $.ajax({
@@ -208,11 +208,39 @@ $('#editnews').on('submit', function(e){
         headers: {
             "Authorization": "Bearer " +  Cookies.get('token')
           },
-        // url: '/api/tintuc/themtin',
+        url: '/api/tintuc/editTinmua',
         data: $(this).serialize() // getting filed value in serialize form
     })
     .done(function(data){
-        // console.log(data.status);
+        if(data.status === 200){
+            location.reload();
+        }
+
+    });// if getting done then ca
+});
+
+$('#editTintuc').on('submit', function(e){
+    e.preventDefault();
+//I had an issue that the forms were submitted in geometrical progression after the next submit.
+// This solved the problem.
+    e.stopImmediatePropagation();
+    // show that something is loading
+    // $('#response').html("<b>Loading data...</b>");
+    for (instance in CKEDITOR.instances) {
+        CKEDITOR.instances[instance].updateElement();
+    }
+    // console.log($(this).serialize());
+    // // Call ajax for pass data to other place
+    $.ajax({
+        type: 'POST',
+        CrossDomain:true,
+        headers: {
+            "Authorization": "Bearer " +  Cookies.get('token')
+          },
+        url: '/api/tintuc/editTintuc',
+        data: $(this).serialize() // getting filed value in serialize form
+    })
+    .done(function(data){
         if(data.status === 200){
             location.reload();
         }

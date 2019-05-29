@@ -25,4 +25,15 @@ class Tintuc extends Model
         return new TintucResource($tintuc);
     }
 
+    public static function updateTintuc($data,$id){
+        $tintuc = Tintuc::findorFail($id);
+
+        $tintuc->tieude= $data['tieude'];
+        $tintuc->chitiet = $data['description'];
+        $tintuc->anh_daidien = $data['anh'];
+        $tintuc->user_id = $data['user_id'];
+        $tintuc->save();
+        
+        return new TintucResource($tintuc);
+    }
 }

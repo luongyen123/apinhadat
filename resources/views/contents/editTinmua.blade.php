@@ -25,7 +25,7 @@ $user = json_decode($user);
                     </div>
                     <div class="card-body">
                         <div class="form-group" >
-                            <label>Chọn địa chỉ - Nếu thay đổi thì chọn lại (Còn không thì không phải chọn lại)</label>
+                            <label style="color:red">Chọn địa chỉ - Nếu thay đổi thì chọn lại (Còn không thì không phải chọn lại)</label>
                             <div class="row">
                                 <div class="col-3 col-md-3 col-lg-3">
                                     <select class="form-control" name="tinhthanh" id="tinhthanh">

@@ -15,10 +15,10 @@
           </div>
           <div class="card-wrap">
             <div class="card-header">
-              <h4>Total Admin</h4>
+              <h4><a href="">Số user</a></h4>
             </div>
             <div class="card-body">
-              10
+              {{$number_user}}
             </div>
           </div>
         </div>
@@ -30,10 +30,10 @@
           </div>
           <div class="card-wrap">
             <div class="card-header">
-              <h4>News</h4>
+              <h4> <a href="/admin/tinmuaban">Số tin mua bán</a></h4>
             </div>
             <div class="card-body">
-              42
+              {{$number_tinmua}}
             </div>
           </div>
         </div>
@@ -45,10 +45,10 @@
           </div>
           <div class="card-wrap">
             <div class="card-header">
-              <h4>Reports</h4>
+              <h4><a href="/admin/tintucnhadat/2">Số bài tin tức nhà đất</a></h4>
             </div>
             <div class="card-body">
-              1,201
+              {{$number_tintuc}}
             </div>
           </div>
         </div>
@@ -60,10 +60,10 @@
           </div>
           <div class="card-wrap">
             <div class="card-header">
-              <h4>Online Users</h4>
+              <h4><a href="/admin/tintucnhadat/1">Dự án nổi bật</a></h4>
             </div>
             <div class="card-body">
-              47
+              {{$number_tinduan}}
             </div>
           </div>
         </div>

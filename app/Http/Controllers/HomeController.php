@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Tintuc;
 use App\Tinmuaban;
 use App\Traits\ApiResponser;
@@ -19,6 +20,15 @@ class HomeController extends Controller
     public function __construct()
     {
         //
+    }
+    public function index(){
+        $number_tinmua = Tinmuaban::count();
+        $number_tintuc = Tintuc::where('loaitin_id',2)->count();
+        $number_tinduan = Tintuc::where("loaitin_id",1)->count();
+        $number_user = User::count();
+        $title = "Home page Admin";
+        $id = "home";
+        return view('contents.index',\compact(['number_tinmua','title','id','number_tintuc','number_tinduan','number_user']));
     }
     /**
      * Loai bai ==1=> them tin mua ban
@@ -65,8 +75,31 @@ class HomeController extends Controller
     }
     public function postEditTinmua(Request $request){
         $id = $request->news_id;
-        
+
+        if($request->tinhthanh == ""){
+            $request->request->set('tinhthanh', $request->matinh_id);
+        }
+        if($request->quanhuyen == ""){
+            $request->request->set('quanhuyen', $request->maqh_id);
+        }
+        if($request->xaphuong == ""){
+            $request->request->set('xaphuong', $request->maxp_id);
+        }
+        $data = Tinmuaban::updateTinmua($request->all(),$id);
+        return $this->successResponseMessage($data,200," Sửa thành công");
+    }
+
+    public function getEditTintuc($idTin){
+        $title ="Sửa bài viết Tin mua bán nhà đất";
+        $id = "tinmuaban";
+        $tintuc = Tintuc::where('id',(int)$idTin)->first();
       
-        return $this->successResponseMessage($data,200,"Tao thanh cong");
+        return view('contents.editTintuc',\compact(['tintuc','title','id']));
+    }
+
+    public function postEditTintuc(Request $request){
+        $id = $request->news_id;
+        $data = Tintuc::updateTintuc($request->all(),$id);
+        return $this->successResponseMessage($data,200," Sửa thành công");
     }
 }

@@ -37,6 +37,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         });
         $router->group(['prefix' => 'tintuc'], function () use ($router) {
             $router->post('/themtin','HomeController@createNews');
+            $router->post('/editTinmua','HomeController@postEditTinmua');
+            $router->post('/editTintuc','HomeController@postEditTintuc');
         });
     });
 });
@@ -47,9 +49,8 @@ $router->group(['prefix' => 'admin'], function () use ($router) {
     });
 
     $router->group(['middleware' => 'admin'], function () use ($router) {
-        $router->get('home', function ()  {
-            return view('contents.index', ['title' => 'Home page Admin','id'=>'home']);
-        });
+        $router->get('home','HomeController@index');
+        
         $router->get('quanhuyen', function ()  {
             return view('contents.quanhuyen', ['title' => 'Page quanhuyen','id'=>'quanhuyen']);
         });
@@ -65,6 +66,8 @@ $router->group(['prefix' => 'admin'], function () use ($router) {
         $router->get('editTinmua/{id}','HomeController@getEditTinmua');
 
         // edit tintuc
-        $router->post('editTinmua','HomeController@postEditTinmua');
+        $router->get('editTintuc/{id}','HomeController@getEditTintuc');
+
+        
     });
 });
