@@ -18,7 +18,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     /**
      * The attributes that are mass assignable.
-     *
+     *role ==0 admin
+     * role =1 editor 
+     * 
      * @var array
      */
     protected $fillable = [
@@ -56,9 +58,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             'email' => $data->email,
             'password' => Hash::make($data->password),
             'avartar' => env('APP_URL').'/avatars/default.jpg',
-            "role"=>0
+            "role"=>1,
+            'status'=>0
         ]);
         return $user;
-
     }
+
 }
