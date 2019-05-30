@@ -17,10 +17,22 @@ class TintucMiddleware
      */
     public function handle($request, Closure $next)
     {
+        
         $user = $request->cookie('user');
         $user = \json_decode($user);
-        $user = User::findorFail($user->id);
-        $tintuc = Tintuc::findorFail($request->id);
+        if($user == null){
+             $id = $request->user_id;
+        }else{
+            $id= $user->id;
+        }
+        $user = User::findorFail($id);
+        // dd($request->all());
+        if(isset($request->id)){
+            $tinId = $request->id;
+        }else{
+            $tinId = $request->news_id;
+        }
+        $tintuc = Tintuc::findorFail($tinId);
 
         //quyen admin or  la bai viet cua chinh no
         if($user->role == 0 || $tintuc->user_id == $user->id ){

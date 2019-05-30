@@ -55,7 +55,7 @@ class HomeController extends Controller
     }
     public function getTintucnhadat($idTin){
        
-        if($idTin === 1){
+        if($idTin == 1){
             $title ="Tin tức dự án";
             $id = "tintucduan";
         }else{
@@ -91,15 +91,14 @@ class HomeController extends Controller
 
     public function getEditTintuc($idTin){
         $title ="Sửa bài viết Tin mua bán nhà đất";
-        $id = "tinmuaban";
+        $id = "tintucnhadat";
         $tintuc = Tintuc::where('id',(int)$idTin)->first();
       
         return view('contents.editTintuc',\compact(['tintuc','title','id']));
     }
 
     public function postEditTintuc(Request $request){
-        $id = $request->news_id;
-        $data = Tintuc::updateTintuc($request->all(),$id);
+        $data = Tintuc::updateTintuc($request->all(),$request->news_id);
         return $this->successResponseMessage($data,200," Sửa thành công");
     }
 

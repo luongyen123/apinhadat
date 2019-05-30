@@ -220,6 +220,8 @@ $('#editnews').on('submit', function(e){
 });
 
 $('#editTintuc').on('submit', function(e){
+    $id = $("#news_id").val();
+   
     e.preventDefault();
 //I had an issue that the forms were submitted in geometrical progression after the next submit.
 // This solved the problem.

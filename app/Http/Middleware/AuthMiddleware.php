@@ -15,7 +15,7 @@ class AuthMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $token = $request->cookie('token');
+        $token = $request->cookie('user');
         if($token == null || $token === ""){
             return redirect('/admin/login');
         }
