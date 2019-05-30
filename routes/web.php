@@ -36,9 +36,15 @@ $router->group(['prefix' => 'api'], function () use ($router) {
             $router->post('/uploadImage','MediaController@uploadImage');
         });
         $router->group(['prefix' => 'tintuc'], function () use ($router) {
+            $router->group(['middleware' => 'isAdmin'], function () use ($router) {                                     
+            });
             $router->post('/themtin','HomeController@createNews');
-            $router->post('/editTinmua','HomeController@postEditTinmua');
-            $router->post('/editTintuc','HomeController@postEditTintuc');
+            $router->group(['middleware' => ['edit']], function () use ($router) {
+                $router->post('/editTintuc','HomeController@postEditTintuc');
+            });
+            $router->group(['middleware' => ['edit1']], function () use ($router) {
+                $router->post('/editTinmua','HomeController@postEditTinmua');
+            });
         });
     });
 });
@@ -54,19 +60,29 @@ $router->group(['prefix' => 'admin'], function () use ($router) {
         $router->get('quanhuyen', function ()  {
             return view('contents.quanhuyen', ['title' => 'Page quanhuyen','id'=>'quanhuyen']);
         });
-        $router->get('vietbai', function ()  {
-            return view('contents.vietbai', ['title' => 'Viết bài mới','id'=>'vietbai']);
+        $router->get('middleware', function ()  {
+            return view('contents.middlewareFail', ['title' => 'Authentication fail','id'=>'quanlyuser']);
         });
         //Get tin mua ban - backend admin
         $router->get('tinmuaban','HomeController@getTinmuaban');
         //Get tin tuc - backend
         $router->get('tintucnhadat/{id}','HomeController@getTintucnhadat');
 
-        //Get tin tuc - edit
-        $router->get('editTinmua/{id}','HomeController@getEditTinmua');
-
-        // edit tintuc
-        $router->get('editTintuc/{id}','HomeController@getEditTintuc');
+        //quyen admin vaf editor
+        $router->group(['middleware' => ['isAdmin']], function () use ($router) {
+            $router->get('getUser','HomeController@getUser');
+        });
+        $router->get('vietbai', function ()  {
+            return view('contents.vietbai', ['title' => 'Viết bài mới','id'=>'vietbai']);
+        });
+        //xacc thuc quyen edit voi tin tuc
+        $router->group(['middleware' => ['edit']], function () use ($router) {
+            $router->get('editTintuc/{id}','HomeController@getEditTintuc');
+        });
+        //quyen edit tinmua ban
+        $router->group(['middleware' => ['edit1']], function () use ($router) {
+            $router->get('editTinmua/{id}','HomeController@getEditTinmua');
+        });                 
 
         
     });

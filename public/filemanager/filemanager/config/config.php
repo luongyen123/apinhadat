@@ -31,7 +31,7 @@ setlocale(LC_CTYPE, 'en_US'); //correct transliteration
 |
 */
 
-define('USE_ACCESS_KEYS', false); // TRUE or FALSE
+define('USE_ACCESS_KEYS', TRUE); // TRUE or FALSE
 
 /*
 |--------------------------------------------------------------------------
@@ -76,7 +76,7 @@ $config = array(
     | with start and final /
     |
     */
-    'upload_dir' => '/files/',
+    'upload_dir' => '/storage/uploads/',
     /*
     |--------------------------------------------------------------------------
     | relative path from filemanager folder to upload folder
@@ -85,7 +85,7 @@ $config = array(
     | with final /
     |
     */
-    'current_path' => '../files/',
+    'current_path' => '../storage/uploads/',
 
     /*
     |--------------------------------------------------------------------------
@@ -96,7 +96,7 @@ $config = array(
     | DO NOT put inside upload folder
     |
     */
-    'thumbs_base_path' => '../thumbs/',
+    'thumbs_base_path' => '../storage/thumbs/',
 
     /*
     |--------------------------------------------------------------------------

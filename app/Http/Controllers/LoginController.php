@@ -32,13 +32,18 @@ class LoginController extends Controller
         ]);
         $user = User::where(['email' => $request->email])->first();
         if(isset($user)){
-                $data['token'] = $this->jwt->attempt($request->only('email', 'password'));
-                if ($data['token'] == false) {
-                    return $this->successResponseMessage($data, 413, "Password inccorect");
-                } else {
-                    $data['user'] = new UserResource($user);
-                    return $this->successResponseMessage($data, 200, "Login success");
-                }           
+                if($user->status == 0){
+                    return $this->successResponseMessage("", 415, "Admin chua xac thuc tai khoan");
+                }else{
+                    $data['token'] = $this->jwt->attempt($request->only('email', 'password'));
+                    if ($data['token'] == false) {
+                        return $this->successResponseMessage($data, 413, "Password inccorect");
+                    } else {
+                        $data['user'] = new UserResource($user);
+                        return $this->successResponseMessage($data, 200, "Login success");
+                    }
+                }
+                          
         }else{
             $data['token'] = false;
             return $this->successResponseMessage($data, 413, "Email inccorect");

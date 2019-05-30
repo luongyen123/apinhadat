@@ -31,6 +31,6 @@ class RegisterController extends Controller
             'password' => 'required|min:6',
         ]);
         $user = User::userCreate($request);
-        return $this->successResponseMessage(new UserResource($user), 200, "Success create account");
+        return $this->successResponseMessage(new UserResource($user), 200, "Ban phai doi Admin phe duyet");
     }
 }

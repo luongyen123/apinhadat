@@ -78,6 +78,16 @@ $app->routeMiddleware([
 $app->routeMiddleware([
     'guest' => App\Http\Middleware\GuestMiddleware::class,
 ]);
+$app->routeMiddleware([
+    'isAdmin' => App\Http\Middleware\AdminMiddleware::class,
+]);
+$app->routeMiddleware([
+    'edit' => App\Http\Middleware\TintucMiddleware::class,
+]);
+$app->routeMiddleware([
+    'edit1' => App\Http\Middleware\TinmuabanMiddleware::class,
+]);
+
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers

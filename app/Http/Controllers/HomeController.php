@@ -102,4 +102,13 @@ class HomeController extends Controller
         $data = Tintuc::updateTintuc($request->all(),$id);
         return $this->successResponseMessage($data,200," Sửa thành công");
     }
+
+    public function getUser(){
+        $title ="Quản lý user";
+        $id = "quanlyuser";
+
+        $users = User::paginate(10);       
+
+        return view('contents.listUser',\compact(['users','title','id']));
+    }
 }
